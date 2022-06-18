@@ -1,3 +1,4 @@
+import { MaterialModule } from 'src/app/core/';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListDicComponent } from './list-dic.component';
@@ -9,7 +10,11 @@ import { ListDicComponent } from './list-dic.component';
     ListDicComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+  ],
+  exports: [
+    ListDicComponent
   ]
 })
 export class ListDicModule { }

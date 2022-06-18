@@ -1,1 +1,26 @@
-<p>consult-dic works!</p>
+<div class="header-field">
+  <div class="header-title">
+    <div class="header-text">Nome dic</div>
+  </div>
+  <div class="header-options">
+    <div class="header-options-button">
+      <button mat-icon-button>
+        <mat-icon>abc</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="content-field">
+  <ng-container *ngFor="let word of wordList">
+    <div class="content-header">
+      <div class="content-title">{{word.name}}</div>
+      <div class="content-extra">ver mais</div>
+    </div>
+    <div class="content-definition">
+      <div class="content-text">Lorem</div>
+    </div>
+  </ng-container>
+</div>

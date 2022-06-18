@@ -12,4 +12,7 @@ export class WordExtraComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submit() {
+
+  }
 }

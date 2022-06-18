@@ -1,1 +1,53 @@
-<p>edit-word works!</p>
+<div mat-dialog-title>
+  <div class="header-field">
+    <div class="header-icon">
+      <mat-icon>edit</mat-icon>
+    </div>
+    <div class="header-title">
+      Editar Palavra
+    </div>
+  </div>
+  <div class="header-close">
+    <button mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <div class="input-field">
+    <form [formGroup]="wordForm">
+      <mat-form-field appearance="legacy">
+        <label>Palavra</label>
+        <input
+          matInput
+          formControlName="wordName"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <label>Definição</label>
+        <input
+          matInput
+          formControlName="wordDefinition"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <label>Definição extra</label>
+        <textarea
+          matInput
+          formControlName="definitionExtra"
+        >
+        </textarea>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="save-button-field">
+    <button
+      mat-raised-button
+      (click)="submit()"
+    >
+      Salvar
+    </button>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WordExtraComponent } from './word-extra.component';
+import { MaterialModule } from 'src/app/core';
 
 
 
@@ -9,7 +10,8 @@ import { WordExtraComponent } from './word-extra.component';
     WordExtraComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
   ]
 })
 export class WordExtraModule { }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-words.component.scss']
 })
 export class ListWordsComponent implements OnInit {
-
+  wordList: any[] = [];
   constructor() { }
 
   ngOnInit(): void {

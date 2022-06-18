@@ -1,3 +1,4 @@
+import { MaterialModule } from 'src/app/core/';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListWordsComponent } from './list-words.component';
@@ -9,7 +10,11 @@ import { ListWordsComponent } from './list-words.component';
     ListWordsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+  ],
+  exports: [
+    ListWordsComponent
   ]
 })
 export class ListWordsModule { }

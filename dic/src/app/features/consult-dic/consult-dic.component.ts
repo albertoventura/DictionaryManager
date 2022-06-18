@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./consult-dic.component.scss']
 })
 export class ConsultDicComponent implements OnInit {
-
+  wordList: any[] = [];
   constructor() { }
 
   ngOnInit(): void {

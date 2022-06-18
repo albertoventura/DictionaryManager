@@ -1,1 +1,30 @@
-<p>word-extra works!</p>
+<div mat-dialog-title>
+  <div class="header-field">
+    <div class="header-icon">
+      <mat-icon>edit</mat-icon>
+    </div>
+    <div class="header-title">
+      Editar Palavra
+    </div>
+  </div>
+  <div class="header-close">
+    <button mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <div class="extra-field">
+    Lorem..
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="close-button-field">
+    <button
+      mat-raised-button
+      (click)="submit()"
+    >
+      Fechar
+    </button>
+  </div>
+</div>

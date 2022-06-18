@@ -1,1 +1,44 @@
-<p>list-words works!</p>
+<div class="header-field">
+  <div class="header-title">
+    <div class="header-text">Dicionário</div>
+  </div>
+  <div class="header-helper">
+    <div class="header-help-button">
+      <button mat-icon-button>
+        <mat-icon>help</mat-icon>
+      </button>
+    </div>
+    <div class="header-help-text">Ajuda</div>
+  </div>
+</div>
+<div class="content-field">
+  <div class="add-button">
+    <button mat-raised-button>
+      <mat-icon>add_circle</mat-icon>
+      <div class="button-text">Palavra</div>
+    </button>
+  </div>
+  <ng-container *ngFor="let word of wordList">
+    <div class="content-title">{{word.name}}</div>
+    <div class="content-buttons">
+      <div class="config-button">
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <div class="delete-button">
+        <button mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<div class="create-dic-field">
+  <div class="add-button">
+    <button mat-icon-button>
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
+</div>
+

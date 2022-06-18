@@ -1,1 +1,54 @@
-<p>edit-dic works!</p>
+<div mat-dialog-title>
+  <div class="header-field">
+    <div class="header-icon">
+      <mat-icon>edit</mat-icon>
+    </div>
+    <div class="header-title">
+      Dicionário
+    </div>
+  </div>
+  <div class="header-close">
+    <button mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <div class="input-field">
+    <form [formGroup]="dicForm">
+      <mat-form-field appearance="legacy">
+        <label>Título</label>
+        <input
+          matInput
+          formControlName="dicName"
+        />
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="color-pick-field">
+    <div class="picker-input"></div>
+    <div class="picker-text">Cor de fundo do botão</div>
+  </div>
+  <div class="color-pick-field">
+    <div class="picker-input"></div>
+    <div class="picker-text">Cor da fonte do botão</div>
+  </div>
+  <div class="color-pick-field">
+    <div class="picker-input"></div>
+    <div class="picker-text">Cor da fonte para títulos</div>
+  </div>
+  <div class="color-pick-field">
+    <div class="picker-input"></div>
+    <div class="picker-text">Cor do ícone</div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="save-button-field">
+    <button
+      mat-raised-button
+      (click)="submit()"
+    >
+      Salvar
+    </button>
+  </div>
+</div>

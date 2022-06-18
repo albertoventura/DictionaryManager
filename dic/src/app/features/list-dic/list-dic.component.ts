@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-dic.component.scss']
 })
 export class ListDicComponent implements OnInit {
-
+  dicList: any[] = [];
   constructor() { }
 
   ngOnInit(): void {
