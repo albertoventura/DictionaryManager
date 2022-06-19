@@ -20,8 +20,10 @@ export class EditDicComponent implements OnInit {
   }
 
 
-  constructor(public dialogRef: MatDialogRef<EditDicComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DicData) {
+  constructor(
+    public dialogRef: MatDialogRef<EditDicComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DicData,
+  ) {
       this.dicData = data;
       console.log('data dic', data);
       this.dicForm.patchValue({ ...data});

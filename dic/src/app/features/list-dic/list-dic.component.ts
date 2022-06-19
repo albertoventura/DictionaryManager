@@ -1,8 +1,10 @@
+import { Dictionary } from 'src/app/core/';
 import { EditDicComponent } from './../edit-dic/edit-dic.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { routerLabels } from 'src/app/core/';
+import { routerLabels, StorageService } from 'src/app/core/';
+import { DataManagerService } from 'src/app/core/services/data-manager.service';
 
 @Component({
   selector: 'app-list-dic',
@@ -15,10 +17,15 @@ export class ListDicComponent implements OnInit {
     {name: 'Parangarico tirimico'},
     {name: 'Toma chavinho'},
   ];
+  dicArray: Dictionary[] = []
   constructor(
     public dialog: MatDialog,
     private router: Router,
-  ) { }
+    private storage: StorageService,
+    private dataManager: DataManagerService,
+  ) {
+    console.log('list',storage.list());
+  }
 
   ngOnInit(): void {
   }
@@ -35,7 +42,10 @@ export class ListDicComponent implements OnInit {
       if (result == undefined){
         //this.user = this.backupUser;
       }else{
-        console.log('volta do dialog', result);
+        let dic = this.dataManager.dicDTO(result);
+        this.storage.set(dic.id,dic);
+        this.dicArray.push(dic);
+        console.log('dicArray', this.dicArray)
         //this.user = result;
         //this.backupUser = result;
         //this.updateUser(this.user);
