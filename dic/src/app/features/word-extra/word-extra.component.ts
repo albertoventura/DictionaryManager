@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-word-extra',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WordExtraComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<WordExtraComponent>,
+  ) {}
 
   ngOnInit(): void {
   }
 
-  submit() {
-
+  close(){
+    this.dialogRef.close();
   }
 }

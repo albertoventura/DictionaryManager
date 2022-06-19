@@ -47,5 +47,8 @@ export class ListDicComponent implements OnInit {
   openWords(value: any){
     this.router.navigate([routerLabels.listWords],{ state: value });
   }
+  openConsult(value: any){
+    this.router.navigate([routerLabels.consultDic],{ state: value });
+  }
 
 }

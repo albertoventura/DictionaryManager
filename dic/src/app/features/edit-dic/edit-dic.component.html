@@ -50,6 +50,8 @@
     <button
       mat-raised-button
       (click)="submit()"
+      [disabled]="!dicForm.valid"
+      [ngClass]="!dicForm.valid ? 'disabled' : ''"
     >
       Salvar
     </button>

@@ -10,7 +10,9 @@
     </div>
   </div>
   <div class="header-close">
-    <button mat-icon-button>
+    <button mat-icon-button
+     (click)="close()"
+    >
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -54,8 +56,10 @@
     <button
       mat-raised-button
       (click)="submit()"
+      [ngClass]="!wordForm.valid ? 'disabled' : ''"
+      [disabled]="!wordForm.valid"
     >
-      Salvara
+      Salvar
     </button>
   </div>
 </div>
