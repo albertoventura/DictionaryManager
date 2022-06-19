@@ -7,20 +7,29 @@
       <button mat-icon-button>
         <mat-icon>abc</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button class="config-button" mat-icon-button>
         <mat-icon>settings</mat-icon>
       </button>
     </div>
   </div>
 </div>
 <div class="content-field">
-  <ng-container *ngFor="let word of wordList">
+  <div
+    class="content-line"
+    *ngFor="let word of wordList
+    let evenItem = even;
+    let oddItem = odd;"
+    [class.even]="evenItem"
+    [class.odd]="oddItem"
+  >
     <div class="content-header">
       <div class="content-title">{{word.name}}</div>
-      <div class="content-extra">ver mais</div>
+      <div class="content-extra">
+        <a href="#" *ngIf="word.extra !=''">ver mais</a>
+      </div>
     </div>
     <div class="content-definition">
-      <div class="content-text">Lorem</div>
+      <div class="content-text">{{word.definition}}</div>
     </div>
-  </ng-container>
+  </div>
 </div>

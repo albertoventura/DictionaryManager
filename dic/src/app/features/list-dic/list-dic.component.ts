@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-dic.component.scss']
 })
 export class ListDicComponent implements OnInit {
-  dicList: any[] = [];
+  dicList: any[] = [
+    {name: 'Lorem Ipsum Dolor'},
+    {name: 'Parangarico tirimico'},
+    {name: 'Toma chavinho'},
+  ];
   constructor() { }
 
   ngOnInit(): void {

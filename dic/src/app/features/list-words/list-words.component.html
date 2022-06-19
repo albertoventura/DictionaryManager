@@ -14,11 +14,20 @@
 <div class="content-field">
   <div class="add-button">
     <button mat-raised-button>
-      <mat-icon>add_circle</mat-icon>
-      <div class="button-text">Palavra</div>
+      <div class="button-content">
+        <mat-icon>add_circle</mat-icon>
+        <div class="button-text">Palavra</div>
+      </div>
     </button>
   </div>
-  <ng-container *ngFor="let word of wordList">
+  <div
+  class="content-line"
+  *ngFor="let word of wordList
+  let evenItem = even;
+  let oddItem = odd;"
+  [class.even]="evenItem"
+  [class.odd]="oddItem"
+  >
     <div class="content-title">{{word.name}}</div>
     <div class="content-buttons">
       <div class="config-button">
@@ -32,13 +41,5 @@
         </button>
       </div>
     </div>
-  </ng-container>
-</div>
-<div class="create-dic-field">
-  <div class="add-button">
-    <button mat-icon-button>
-      <mat-icon>add_circle</mat-icon>
-    </button>
   </div>
 </div>
-

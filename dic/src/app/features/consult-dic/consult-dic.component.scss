@@ -1,0 +1,72 @@
+.header-field{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(151, 151, 151);
+  .header-title{
+    display: flex;
+    flex-direction: row;
+    line-height: 39px;
+
+    .header-text {
+      color: #264399;
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+  .header-options-button{
+    button:last-child {
+      margin-left: 25px;
+    }
+  }
+
+}
+
+.content-field{
+  margin: 20px 0;
+}
+.content-line{
+  display: flex;
+  flex-direction: column;
+  //justify-content: space-between;
+  line-height: 39px;
+  padding: 0 10px;
+  .content-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .content-title{
+      font-weight: 600;
+    }
+  }
+  .content-definition{
+    .content-text{
+      font-size: 13px;
+    }
+  }
+  .content-buttons{
+    display: flex;
+    flex-direction: row;
+    color: #264399;
+  }
+  .consult-button{
+    margin-right: 30px;
+  }
+}
+
+.odd {
+  background-color: #e9e9e9;
+  border-top: 1px solid #c5c5c5;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.even {
+  //background-color: #fff;
+}
+
+.add-button{
+  mat-icon {
+    color: #264399;
+  }
+}
