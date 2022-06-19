@@ -1,27 +1,30 @@
-<div mat-dialog-title>
-  <div class="header-field">
+<div mat-dialog-title class="header-container">
+  <div class="header-title">
     <div class="header-icon">
       <mat-icon>edit</mat-icon>
     </div>
-    <div class="header-title">
+    <div class="header-text">
       Dicionário
     </div>
   </div>
   <div class="header-close">
-    <button mat-icon-button>
+    <button mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
 </div>
-<div mat-dialog-content>
+<div mat-dialog-content class="content-container">
   <div class="input-field">
     <form [formGroup]="dicForm">
       <mat-form-field appearance="legacy">
         <label>Título</label>
         <input
           matInput
-          formControlName="dicName"
+          formControlName="name"
         />
+        <mat-error *ngIf="name?.errors?.['required']">
+          Esse campo é obrigatório!
+        </mat-error>
       </mat-form-field>
     </form>
   </div>
@@ -42,7 +45,7 @@
     <div class="picker-text">Cor do ícone</div>
   </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="footer-container">
   <div class="save-button-field">
     <button
       mat-raised-button

@@ -1,10 +1,12 @@
-<div mat-dialog-title>
-  <div class="header-field">
+<div mat-dialog-title class="header-container">
+  <div class="header-title">
     <div class="header-icon">
       <mat-icon>edit</mat-icon>
     </div>
-    <div class="header-title">
-      Editar Palavra
+    <div class="header-text">
+      <span>Editar</span>
+      <span>Cadastrar</span>
+      <span>Palavra</span>
     </div>
   </div>
   <div class="header-close">
@@ -13,41 +15,47 @@
     </button>
   </div>
 </div>
-<div mat-dialog-content>
+<div mat-dialog-content class="content-container">
   <div class="input-field">
     <form [formGroup]="wordForm">
       <mat-form-field appearance="legacy">
         <label>Palavra</label>
         <input
           matInput
-          formControlName="wordName"
+          formControlName="name"
         />
+        <mat-error *ngIf="name?.errors?.['required']">
+          Esse campo é obrigatório!
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="legacy">
         <label>Definição</label>
         <input
           matInput
-          formControlName="wordDefinition"
+          formControlName="definition"
         />
+        <mat-error *ngIf="definition?.errors?.['required']">
+          Esse campo é obrigatório!
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="legacy">
         <label>Definição extra</label>
         <textarea
           matInput
-          formControlName="definitionExtra"
+          formControlName="extra"
         >
         </textarea>
       </mat-form-field>
     </form>
   </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="footer-container">
   <div class="save-button-field">
     <button
       mat-raised-button
       (click)="submit()"
     >
-      Salvar
+      Salvara
     </button>
   </div>
 </div>

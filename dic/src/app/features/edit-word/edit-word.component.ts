@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-word',
@@ -8,31 +9,47 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class EditWordComponent implements OnInit {
 
+  wordData: any;
+
   wordForm = new FormGroup({
-    wordName: new FormControl('', Validators.required),
-    wordDefinition: new FormControl('', Validators.required),
-    definitionExtra: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    definition: new FormControl('', Validators.required),
+    extra: new FormControl(''),
   });
-  get wordName() {
-    return this.wordForm.get('wordName');
+  get name() {
+    return this.wordForm.get('name');
   }
-  get wordDefinition() {
-    return this.wordForm.get('wordDefinition');
+  get definition() {
+    return this.wordForm.get('definition');
   }
   get definitionExtra() {
     return this.wordForm.get('definitionExtra');
   }
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<EditWordComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: WordData) {
+      this.wordData = data;
+      console.log('data word', data);
+      this.wordForm.patchValue({ ...data});
+  }
 
   ngOnInit(): void {
   }
-
+  close(){
+    this.dialogRef.close();
+  }
   submit() {
+    console.log('form', this.wordForm.value);
     if(!this.wordForm.valid){
       return;
     }
-
-
+    this.dialogRef.close(this.wordForm.value);
   }
-
+}
+export interface WordData {
+  id: number;
+  dicName: string;
+  buttonColor: string;
+  fontButtonColor: string;
+  titleColor: string;
+  iconColor: string;
 }

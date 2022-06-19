@@ -1,4 +1,8 @@
+import { EditDicComponent } from './../edit-dic/edit-dic.component';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { routerLabels } from 'src/app/core/';
 
 @Component({
   selector: 'app-list-dic',
@@ -11,9 +15,37 @@ export class ListDicComponent implements OnInit {
     {name: 'Parangarico tirimico'},
     {name: 'Toma chavinho'},
   ];
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openEdit(value?: any): void {
+    console.log(value);
+    const dialogRef = this.dialog.open(
+      EditDicComponent,{
+      data: value,
+      panelClass: 'dialog-edit-dic'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == undefined){
+        //this.user = this.backupUser;
+      }else{
+        console.log('volta do dialog', result);
+        //this.user = result;
+        //this.backupUser = result;
+        //this.updateUser(this.user);
+        //this.saveLocalStorage(this.user);
+      }
+    });
+  }
+
+  openWords(value: any){
+    this.router.navigate([routerLabels.listWords],{ state: value });
   }
 
 }

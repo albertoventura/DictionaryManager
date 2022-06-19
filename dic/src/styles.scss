@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-dialog-container{
+  padding: 0 !important;
+  width: 460px !important;
+  overflow: hidden !important;
+}
+
+.dialog-edit-dic .mat-dialog-container{
+  height: 280px !important;
+}
+.dialog-edit-word .mat-dialog-container{
+  height: 360px !important;
+}

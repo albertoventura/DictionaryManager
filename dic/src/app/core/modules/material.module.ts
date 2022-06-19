@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatInputModule,
     BrowserAnimationsModule,
   ],
   exports: [
@@ -28,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatInputModule,
     BrowserAnimationsModule,
   ]
 })

@@ -2,7 +2,11 @@
   <div class="header-title">
     <div class="header-text">Dicionário</div>
     <div class="add-button">
-      <button mat-icon-button>
+      <button mat-icon-button
+        (click)="openEdit()"
+        matTooltip="Adicionar"
+        matTooltipPosition="left"
+      >
         <mat-icon>add_circle</mat-icon>
       </button>
     </div>
@@ -29,28 +33,42 @@
     <div class="content-buttons">
       <div class="consult-button">
         <button mat-icon-button
-
+          matTooltip="Visualizar"
+          matTooltipPosition="left"
+          [matTooltipShowDelay]="1"
+          [matTooltipHideDelay]="1"
         >
           <mat-icon>search</mat-icon>
         </button>
       </div>
       <div class="word-button">
         <button mat-icon-button
-
+          matTooltip="Palavras"
+          matTooltipPosition="left"
+          [matTooltipShowDelay]="1"
+          [matTooltipHideDelay]="1"
+          (click)="openWords(dic)"
         >
           <mat-icon>abc</mat-icon>
         </button>
       </div>
       <div class="config-button">
         <button mat-icon-button
-
+          (click)="openEdit(dic)"
+          matTooltip="Configurar"
+          matTooltipPosition="left"
+          [matTooltipShowDelay]="1"
+          [matTooltipHideDelay]="1"
         >
           <mat-icon>settings</mat-icon>
         </button>
       </div>
       <div class="delete-button">
         <button mat-icon-button
-
+          matTooltip="Excluir"
+          matTooltipPosition="left"
+          [matTooltipShowDelay]="1"
+          [matTooltipHideDelay]="1"
         >
           <mat-icon>close</mat-icon>
         </button>
@@ -61,7 +79,9 @@
 <div class="create-dic-field">
   <div class="add-button">
     <button mat-icon-button
-
+      (click)="openEdit()"
+      matTooltip="Adicionar"
+      matTooltipPosition="left"
     >
       <mat-icon>add_circle</mat-icon>
     </button>
