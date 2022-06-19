@@ -23,7 +23,7 @@
 <div class="content-field">
   <div
     class="content-line"
-    *ngFor="let dic of dicList
+    *ngFor="let dic of dicArray
     let evenItem = even;
     let oddItem = odd;"
     [class.even]="evenItem"
@@ -70,6 +70,7 @@
           matTooltipPosition="left"
           [matTooltipShowDelay]="1"
           [matTooltipHideDelay]="1"
+          (click)="remove(dic)"
         >
           <mat-icon>close</mat-icon>
         </button>

@@ -24,7 +24,8 @@ export class ListDicComponent implements OnInit {
     private storage: StorageService,
     private dataManager: DataManagerService,
   ) {
-    console.log('list',storage.list());
+    console.log('list',storage.listAll());
+    this.refreshArray();
   }
 
   ngOnInit(): void {
@@ -39,17 +40,10 @@ export class ListDicComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result == undefined){
-        //this.user = this.backupUser;
-      }else{
-        let dic = this.dataManager.dicDTO(result);
+      if (result != undefined){
+        let dic = result;
         this.storage.set(dic.id,dic);
-        this.dicArray.push(dic);
-        console.log('dicArray', this.dicArray)
-        //this.user = result;
-        //this.backupUser = result;
-        //this.updateUser(this.user);
-        //this.saveLocalStorage(this.user);
+        this.refreshArray();
       }
     });
   }
@@ -59,6 +53,14 @@ export class ListDicComponent implements OnInit {
   }
   openConsult(value: any){
     this.router.navigate([routerLabels.consultDic],{ state: value });
+  }
+  remove(value: any){
+    if(this.storage.remove(value.id)){
+      this.refreshArray();
+    }
+  }
+  refreshArray(){
+    this.dicArray = this.storage.listAll();
   }
 
 }

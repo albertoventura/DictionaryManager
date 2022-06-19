@@ -8,10 +8,9 @@ export class DataManagerService {
 
   constructor() { }
 
-  dicDTO(data: any){
-    if(!data.id){
-      console.log('não tem id');
-      data.id = new Date().getTime();
+  dicDTO(data: any, isNew: boolean){
+    if(isNew){
+      data.id = this.generateId()
     }
     let dic: Dictionary = new Dictionary(
       data.id,
@@ -29,5 +28,7 @@ export class DataManagerService {
     );
     return word;
   }
-
+  generateId(){
+    return new Date().getTime();
+  }
 }
