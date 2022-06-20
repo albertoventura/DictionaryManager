@@ -12,6 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 360px !important;
   width: 460px !important;
 }
+.dialog-remove .mat-dialog-container{
+  height: 150px !important;
+  width: 460px !important;
+}
 .dialog-edit-word .mat-dialog-container{
   height: 360px !important;
   width: 460px !important;

@@ -4,8 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { routerLabels, StorageService } from 'src/app/core/';
-import { DataManagerService } from 'src/app/core/services/data-manager.service';
-import { FilterWordsComponent } from 'src/app/shared';
+import { DeleteComponent } from 'src/app/shared/components/delete';
 
 @Component({
   selector: 'app-list-dic',
@@ -51,9 +50,21 @@ export class ListDicComponent implements OnInit {
     this.router.navigate([routerLabels.consultDic],{ state: value });
   }
   remove(value: any){
-    if(this.storage.remove(value.id)){
-      this.refreshArray();
-    }
+    const dialogRef = this.dialog.open(
+      DeleteComponent,{
+      data: value,
+      panelClass: 'dialog-remove'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined && result == true){
+        if(this.storage.remove(value.id)){
+          this.refreshArray();
+        }
+      }
+    });
+
+
   }
   refreshArray(){
     this.baseArray = this.storage.listDic();

@@ -1,0 +1,39 @@
+<div mat-dialog-title class="header-container">
+  <div class="header-title">
+    <div class="header-text">
+      Excluir
+    </div>
+  </div>
+  <div class="header-close">
+    <button mat-icon-button
+      matTooltip="Fechar"
+      matTooltipPosition="above"
+      [matTooltipShowDelay]="1"
+      [matTooltipHideDelay]="1"
+     (click)="close()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content class="content-container">
+  <div class="text-field">
+    Você gostaria de excluir o item?
+  </div>
+</div>
+<div mat-dialog-actions class="footer-container">
+  <div class="save-button-field">
+    <button
+      mat-raised-button
+      (click)="close()"
+    >
+      Não
+    </button>
+    <button
+      mat-raised-button
+      (click)="submit()"
+    >
+      Sim
+    </button>
+  </div>
+</div>
