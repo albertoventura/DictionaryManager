@@ -15,6 +15,10 @@
   <div class="add-button">
     <button mat-raised-button
       (click)="openEdit()"
+      matTooltip="Adicionar"
+      matTooltipPosition="above"
+      [matTooltipShowDelay]="1"
+      [matTooltipHideDelay]="1"
     >
       <div class="button-content">
         <mat-icon>add_circle</mat-icon>
@@ -34,6 +38,10 @@
     <div class="content-buttons">
       <div class="config-button">
         <button mat-icon-button
+          matTooltip="Configurar"
+          matTooltipPosition="above"
+          [matTooltipShowDelay]="1"
+          [matTooltipHideDelay]="1"
           (click)="openEdit(word)"
         >
           <mat-icon>edit</mat-icon>
@@ -42,6 +50,10 @@
       <div class="delete-button">
         <button mat-icon-button
           (click)="remove(word)"
+          matTooltip="Excluir"
+          matTooltipPosition="above"
+          [matTooltipShowDelay]="1"
+          [matTooltipHideDelay]="1"
         >
           <mat-icon>close</mat-icon>
         </button>
