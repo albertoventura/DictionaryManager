@@ -1,8 +1,9 @@
 import { WordExtraComponent } from './../word-extra/word-extra.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/core';
+import { FilterWordsComponent } from 'src/app/shared';
 
 @Component({
   selector: 'app-consult-dic',
@@ -17,7 +18,9 @@ export class ConsultDicComponent implements OnInit {
   ];
 
   dataRoute: any;
+  baseArray: any[] = []
   wordArray: any[] = [];
+  @ViewChild('filter') filter!: FilterWordsComponent;
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -58,7 +61,28 @@ export class ConsultDicComponent implements OnInit {
       }
     });
   }
-  refreshArray(){
-    this.wordArray = this.storage.listWords(this.dataRoute.id);
+  refreshArray(fromFilter?: boolean){
+    //console.log('sort',this.sortArray);
+    this.baseArray = this.storage.listWords(this.dataRoute.id);
+    this.sortAlphabeticaly();
+    if(fromFilter){
+      /*
+      if(this.hasFilter){
+        this.filter.filterArray();
+        this.wordArray = this.filter.filteredArray;
+        return;
+      }*/
+      this.wordArray = this.filter.filteredArray;
+      return;
+    }
+    this.wordArray = this.baseArray;
+  }
+  sortAlphabeticaly(){
+    this.baseArray =
+    this.baseArray.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
   }
 }

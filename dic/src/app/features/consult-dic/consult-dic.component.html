@@ -25,6 +25,12 @@
   </div>
 </div>
 <div class="content-field">
+  <div class="filter-container">
+    <filter-words #filter
+        [array]="baseArray"
+        (pick)="refreshArray($event)"
+      ></filter-words>
+  </div>
   <div
     class="content-line"
     *ngFor="let word of wordArray

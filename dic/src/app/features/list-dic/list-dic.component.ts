@@ -23,7 +23,6 @@ export class ListDicComponent implements OnInit {
 
   baseArray: Dictionary[] = []
   dicArray: Dictionary[] = []
-  @ViewChild('filter') filter!: FilterWordsComponent;
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -65,14 +64,20 @@ export class ListDicComponent implements OnInit {
       this.refreshArray();
     }
   }
-  refreshArray(fromFilter?: boolean){
+  refreshArray(){
     this.baseArray = this.storage.listDic();
-    if(fromFilter){
-      this.dicArray = this.filter.filteredArray;
-      return;
-    }
+    this.sortAlphabeticaly();
     this.dicArray = this.baseArray;
     console.log('dicArray', this.dicArray);
   }
+  sortAlphabeticaly(){
 
+    this.baseArray =
+    this.baseArray.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+    console.log('sorted', this.baseArray);
+  }
 }
