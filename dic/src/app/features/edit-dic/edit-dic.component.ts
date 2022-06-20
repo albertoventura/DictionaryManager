@@ -10,13 +10,12 @@ import { DataManagerService } from 'src/app/core/services/data-manager.service';
 })
 export class EditDicComponent implements OnInit {
 
-  buttonColor: any = "#fff";
-  fontButtonColor: any = "#fff";
-  titleColor: any = "#fff";
-  iconColor: any = "#fff";
-
-
+  buttonColor: any = "";
+  fontButtonColor: any = "";
+  titleColor: any = "";
+  iconColor: any = "";
   isNewDic: boolean = false;
+
   dicForm = new FormGroup({
     id: new FormControl(this.isNewDic ? this.data.id : ''),
     name: new FormControl('', Validators.required)
@@ -25,7 +24,6 @@ export class EditDicComponent implements OnInit {
   get name() {
     return this.dicForm.get('name');
   }
-
 
   constructor(
     public dialogRef: MatDialogRef<EditDicComponent>,
@@ -60,20 +58,11 @@ export class EditDicComponent implements OnInit {
         this.titleColor,
         this.iconColor,
       )
-    console.log(dic);
     this.dialogRef.close(dic);
   }
   close(){
     this.dialogRef.close();
   }
-  /*
-  getColor(){
-    console.log('buttonColor',this.buttonColor);
-    console.log('fontButtonColor',this.fontButtonColor);
-    console.log('titleColor',this.titleColor);
-    console.log('iconColor',this.iconColor);
-  }
-  */
   buildColor(){
     this.buttonColor = this.data.buttonColor;
     this.fontButtonColor = this.data.fontButtonColor;
