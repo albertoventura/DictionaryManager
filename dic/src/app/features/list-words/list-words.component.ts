@@ -16,6 +16,7 @@ export class ListWordsComponent implements OnInit {
     {name: 'Ipsum'},
     {name: 'Dolor'},
   ];
+  sortArray: any[] = [];
   hasFilter: boolean = false;
   baseArray: any[] = []
   wordArray: any[] = [];
@@ -63,11 +64,10 @@ export class ListWordsComponent implements OnInit {
   }
   */
   refreshArray(fromFilter?: boolean){
-    console.log('chamou refresh');
+    //console.log('sort',this.sortArray);
     this.baseArray = this.storage.listWords(this.dataRoute.id);
-    console.log('base array', this.baseArray);
+    this.sortAlphabeticaly();
     if(fromFilter){
-      console.log('entrou no if');
       /*
       if(this.hasFilter){
         this.filter.filterArray();
@@ -75,20 +75,20 @@ export class ListWordsComponent implements OnInit {
         return;
       }*/
       this.filter.hasFilter = true;
-      console.log('wordArray antes',this.wordArray);
-      console.log('filter array', this.filter.filteredArray);
-      console.log('letter', this.filter.pickedLetter);
       this.wordArray = this.filter.filteredArray;
-      console.log('wordArray depois',this.wordArray);
       this.hasFilter = true;
       return;
     }
     this.wordArray = this.baseArray;
-    console.log('dicArray', this.wordArray);
   }
 
-  refreshList(){
-
+  sortAlphabeticaly(){
+    this.baseArray =
+    this.baseArray.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
   }
 
 }
