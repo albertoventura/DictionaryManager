@@ -18,13 +18,10 @@ export class FilterWordsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('array base no filter', this.array);
   }
 
   pickLetter(value: string){
-    console.log(value);
     this.pickedLetter = value.toLowerCase();
-
     this.filterArray();
   }
 
@@ -36,24 +33,14 @@ export class FilterWordsComponent implements OnInit {
     }
     this.filteredArray = [];
     for (let i = 0; i < this.array.length; i++) {
-      console.log('leng', this.array.length);
-      //const element = array[i];
       let name: string = this.array[i].name.toLowerCase();
-      //console.log('ararara', this.array[i]);
-      console.log('nananana', name);
-      console.log('start', name.startsWith(this.pickedLetter));
       if(name.startsWith(this.pickedLetter)){
-        console.log('ESCOOOOOO', name);
         let value = this.array[i];
         this.filteredArray.push(value);
       }
 
     }
-    console.log('filteredArray', this.filteredArray);
-    //this.hasFilter = true;
-
     this.pick.emit(true);
-
   }
   resetFilter(){
     this.pickedLetter = '';
