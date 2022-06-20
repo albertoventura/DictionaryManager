@@ -9,7 +9,6 @@ import { general } from 'src/app/core';
 export class FilterWordsComponent implements OnInit {
   letterList: string[] = general.alphabet.split('');
   pickedLetter: string = '';
-  hasFilter: boolean = false;
   @Input('array') array: any[] = [];
   @Output() pick = new EventEmitter<boolean>();
   filteredArray: any[] = [];
