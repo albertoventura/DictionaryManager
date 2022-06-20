@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { routerLabels, StorageService } from 'src/app/core';
 import { FilterWordsComponent } from 'src/app/shared';
+import { DeleteComponent } from 'src/app/shared/components/delete';
 
 @Component({
   selector: 'app-list-words',
@@ -49,9 +50,19 @@ export class ListWordsComponent implements OnInit {
     });
   }
   remove(value: any){
-    if(this.storage.remove(value.id)){
-      this.refreshArray();
-    }
+    const dialogRef = this.dialog.open(
+      DeleteComponent,{
+      data: value,
+      panelClass: 'dialog-remove'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined && result == true){
+        if(this.storage.remove(value.id)){
+          this.refreshArray();
+        }
+      }
+    });
   }
 
   refreshArray(fromFilter?: boolean){
