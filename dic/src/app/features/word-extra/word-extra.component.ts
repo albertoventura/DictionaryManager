@@ -11,9 +11,7 @@ export class WordExtraComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<WordExtraComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ExtraData,
-  ) {
-    console.log('data', data)
-  }
+  ) {}
 
   ngOnInit(): void {
   }
