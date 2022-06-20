@@ -1,0 +1,27 @@
+
+.filter-field{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  width: fit-content;
+  background: #addcf7;
+  border: 1px solid #6fa3c1;
+  border-radius: 4px;
+  padding: 4px 15px;
+}
+.letter-field{
+  padding: 0 5px;
+  color: #307bc0;
+  a{
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  a.active {
+    //font-size: 17px;
+    line-height: 0;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+}

@@ -10,6 +10,9 @@ import { FilterWordsComponent } from './filter-words.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    FilterWordsComponent
   ]
 })
 export class FilterWordsModule { }

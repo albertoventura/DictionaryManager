@@ -34,9 +34,14 @@ export class EditDicComponent implements OnInit {
   ) {
       if(data == undefined) {
         this.isNewDic = true;
+        this.buttonColor = "#264399";
+        this.fontButtonColor = "#fff";
+        this.titleColor = "#264399";
+        this.iconColor = "#264399";
+      }else{
+        this.buildColor();
+        this.dicForm.patchValue({ ...data});
       }
-      this.buildColor();
-      this.dicForm.patchValue({ ...data});
   }
 
   ngOnInit(): void {

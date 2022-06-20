@@ -1,10 +1,11 @@
 import { Dictionary } from 'src/app/core/';
 import { EditDicComponent } from './../edit-dic/edit-dic.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { routerLabels, StorageService } from 'src/app/core/';
 import { DataManagerService } from 'src/app/core/services/data-manager.service';
+import { FilterWordsComponent } from 'src/app/shared';
 
 @Component({
   selector: 'app-list-dic',
@@ -19,15 +20,18 @@ export class ListDicComponent implements OnInit {
     {name: 'Toma chavinho'},
   ];
   */
+
+  baseArray: Dictionary[] = []
   dicArray: Dictionary[] = []
+  @ViewChild('filter') filter!: FilterWordsComponent;
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private storage: StorageService,
   ) {
-    console.log('list',storage.listAll());
+    //console.log('list',storage.listAll());
     this.refreshArray();
-    console.log('teste sto', this.storage.get(1655685070681));
+    //console.log('teste sto', this.storage.get(1655685070681));
   }
 
   ngOnInit(): void {
@@ -61,8 +65,14 @@ export class ListDicComponent implements OnInit {
       this.refreshArray();
     }
   }
-  refreshArray(){
-    this.dicArray = this.storage.listDic();
+  refreshArray(fromFilter?: boolean){
+    this.baseArray = this.storage.listDic();
+    if(fromFilter){
+      this.dicArray = this.filter.filteredArray;
+      return;
+    }
+    this.dicArray = this.baseArray;
+    console.log('dicArray', this.dicArray);
   }
 
 }

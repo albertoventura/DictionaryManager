@@ -1,3 +1,4 @@
+import { FilterWordsModule } from 'src/app/shared';
 import { MaterialModule } from 'src/app/core/';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,7 @@ import {MatDialogModule} from '@angular/material/dialog';
   imports: [
     CommonModule,
     MaterialModule,
+    FilterWordsModule
   ],
   exports: [
     ListDicComponent
