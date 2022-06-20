@@ -49,6 +49,7 @@ export class ListWordsComponent implements OnInit {
         console.log('volta do dialog', result);
         let word = result;
         this.storage.set(word.id,word);
+        this.filter.resetFilter();
         this.refreshArray();
       }
     });
@@ -74,9 +75,7 @@ export class ListWordsComponent implements OnInit {
         this.wordArray = this.filter.filteredArray;
         return;
       }*/
-      this.filter.hasFilter = true;
       this.wordArray = this.filter.filteredArray;
-      this.hasFilter = true;
       return;
     }
     this.wordArray = this.baseArray;

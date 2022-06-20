@@ -52,9 +52,12 @@ export class FilterWordsComponent implements OnInit {
     }
     console.log('filteredArray', this.filteredArray);
     //this.hasFilter = true;
-    if(!this.hasFilter){
-      this.pick.emit(true);
-    }
-  }
 
+    this.pick.emit(true);
+
+  }
+  resetFilter(){
+    this.pickedLetter = '';
+    this.filterArray();
+  }
 }
