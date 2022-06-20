@@ -54,6 +54,7 @@
 }
 
 .add-button{
+  margin-bottom: 20px;
   button {
     background-color: #264399;
   }
@@ -74,4 +75,9 @@
       left: -7px;
     }
   }
+}
+.filter-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

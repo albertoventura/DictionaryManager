@@ -49,3 +49,9 @@
     </div>
   </div>
 </div>
+<div class="filter-container">
+  <filter-words #filter
+      [array]="baseArray"
+      (pick)="refreshArray($event)"
+    ></filter-words>
+</div>

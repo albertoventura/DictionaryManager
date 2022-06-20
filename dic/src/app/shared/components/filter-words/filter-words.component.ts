@@ -9,6 +9,7 @@ import { FilterService, general } from 'src/app/core';
 export class FilterWordsComponent implements OnInit {
   letterList: string[] = general.alphabet.split('');
   pickedLetter: string = '';
+  hasFilter: boolean = false;
   @Input('array') array: any[] = [];
   @Output() pick = new EventEmitter<boolean>();
   filteredArray: any[] = [];
@@ -50,7 +51,10 @@ export class FilterWordsComponent implements OnInit {
 
     }
     console.log('filteredArray', this.filteredArray);
-    this.pick.emit(true);
+    //this.hasFilter = true;
+    if(!this.hasFilter){
+      this.pick.emit(true);
+    }
   }
 
 }

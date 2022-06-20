@@ -1,8 +1,9 @@
 import { EditWordComponent } from './../edit-word/edit-word.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/core';
+import { FilterWordsComponent } from 'src/app/shared';
 
 @Component({
   selector: 'app-list-words',
@@ -15,8 +16,11 @@ export class ListWordsComponent implements OnInit {
     {name: 'Ipsum'},
     {name: 'Dolor'},
   ];
+  hasFilter: boolean = false;
+  baseArray: any[] = []
   wordArray: any[] = [];
   dataRoute: any;
+  @ViewChild('filter') filter!: FilterWordsComponent;
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -53,7 +57,38 @@ export class ListWordsComponent implements OnInit {
       this.refreshArray();
     }
   }
+  /*
   refreshArray(){
     this.wordArray = this.storage.listWords(this.dataRoute.id);
   }
+  */
+  refreshArray(fromFilter?: boolean){
+    console.log('chamou refresh');
+    this.baseArray = this.storage.listWords(this.dataRoute.id);
+    console.log('base array', this.baseArray);
+    if(fromFilter){
+      console.log('entrou no if');
+      /*
+      if(this.hasFilter){
+        this.filter.filterArray();
+        this.wordArray = this.filter.filteredArray;
+        return;
+      }*/
+      this.filter.hasFilter = true;
+      console.log('wordArray antes',this.wordArray);
+      console.log('filter array', this.filter.filteredArray);
+      console.log('letter', this.filter.pickedLetter);
+      this.wordArray = this.filter.filteredArray;
+      console.log('wordArray depois',this.wordArray);
+      this.hasFilter = true;
+      return;
+    }
+    this.wordArray = this.baseArray;
+    console.log('dicArray', this.wordArray);
+  }
+
+  refreshList(){
+
+  }
+
 }

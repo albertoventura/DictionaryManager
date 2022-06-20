@@ -2,6 +2,7 @@ import { MaterialModule } from 'src/app/core/';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListWordsComponent } from './list-words.component';
+import { FilterWordsModule } from 'src/app/shared';
 
 
 
@@ -12,6 +13,7 @@ import { ListWordsComponent } from './list-words.component';
   imports: [
     CommonModule,
     MaterialModule,
+    FilterWordsModule,
   ],
   exports: [
     ListWordsComponent
