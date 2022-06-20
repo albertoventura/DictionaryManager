@@ -29,4 +29,8 @@ export interface ExtraData {
   definition: string,
   extra: string,
   word: string,
+  buttonColor: string,
+  fontButtonColor: string,
+  iconColor: string,
+  titleColor: string,
 }

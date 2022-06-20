@@ -35,7 +35,14 @@ export class ConsultDicComponent implements OnInit {
     console.log(value);
     const dialogRef = this.dialog.open(
       WordExtraComponent,{
-      data: value,
+      data: {
+        name: value.name,
+        extra: value.extra,
+        buttonColor: this.dataRoute.buttonColor,
+        fontButtonColor: this.dataRoute.fontButtonColor,
+        iconColor: this.dataRoute.iconColor,
+        titleColor: this.dataRoute.titleColor
+      },
       panelClass: 'dialog-word-extra'
     });
 

@@ -1,15 +1,26 @@
-<div mat-dialog-title class="header-container">
+<div mat-dialog-title
+  class="header-container"
+  [style.BackgroundColor]="data.buttonColor"
+>
   <div class="header-title">
     <div class="header-icon">
-      <mat-icon>description</mat-icon>
+      <mat-icon
+        [style.Color]="data.iconColor"
+      >description</mat-icon>
     </div>
-    <div class="header-text">
+    <div class="header-text"
+      [style.Color]="data.titleColor"
+    >
       {{data.name}}
     </div>
   </div>
   <div class="header-close">
     <button mat-icon-button (click)="close()">
-      <mat-icon>close</mat-icon>
+      <mat-icon
+        [style.Color]="data.fontButtonColor"
+      >
+        close
+      </mat-icon>
     </button>
   </div>
 </div>
@@ -23,8 +34,11 @@
     <button
       mat-raised-button
       (click)="close()"
+      [style.BackgroundColor]="data.buttonColor"
     >
-      Fechar
+      <span [style.Color]="data.fontButtonColor">
+        Fechar
+      </span>
     </button>
   </div>
 </div>
