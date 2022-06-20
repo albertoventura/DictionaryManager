@@ -29,21 +29,30 @@
     </form>
   </div>
   <div class="color-pick-field">
-    <div class="picker-input"></div>
+    <div class="picker-input">
+      <input [(colorPicker)]="buttonColor" [style.background]="buttonColor"/>
+    </div>
     <div class="picker-text">Cor de fundo do botão</div>
   </div>
   <div class="color-pick-field">
-    <div class="picker-input"></div>
+    <div class="picker-input">
+      <input [(colorPicker)]="fontButtonColor" [style.background]="fontButtonColor"/>
+    </div>
     <div class="picker-text">Cor da fonte do botão</div>
   </div>
   <div class="color-pick-field">
-    <div class="picker-input"></div>
+    <div class="picker-input">
+      <input [(colorPicker)]="titleColor" [style.background]="titleColor"/>
+    </div>
     <div class="picker-text">Cor da fonte para títulos</div>
   </div>
   <div class="color-pick-field">
-    <div class="picker-input"></div>
+    <div class="picker-input">
+      <input [(colorPicker)]="iconColor" [style.background]="iconColor"/>
+    </div>
     <div class="picker-text">Cor do ícone</div>
   </div>
+  <!--<button (click)="getColor()">get</button>-->
 </div>
 <div mat-dialog-actions class="footer-container">
   <div class="save-button-field">

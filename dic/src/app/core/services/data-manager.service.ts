@@ -8,13 +8,24 @@ export class DataManagerService {
 
   constructor() { }
 
-  dicDTO(data: any, isNew: boolean){
+  dicDTO(
+    data: any,
+    isNew: boolean,
+    buttonColor: string,
+    fontButtonColor: string,
+    titleColor: string,
+    iconColor: string
+  ){
     if(isNew){
       data.id = this.generateId()
     }
     let dic: Dictionary = new Dictionary(
       data.id,
       data.name,
+      buttonColor,
+      fontButtonColor,
+      titleColor,
+      iconColor
     );
     return dic;
   }

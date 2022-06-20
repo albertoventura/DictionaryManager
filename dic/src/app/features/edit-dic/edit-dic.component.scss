@@ -48,3 +48,18 @@
   background-color: #e0e0e0 !important;
   color: #a6a6a6 !important;
 }
+.color-pick-field{
+  display: flex;
+  flex-direction: row;
+  line-height: 28px;
+  margin-bottom: 10px;
+  .picker-text{
+    margin-left: 10px;
+  }
+  .picker-input input{
+    width: 25px;
+    height: 25px;
+    border: 1px solid #818181;
+    border-radius: 4px;
+  }
+}

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EditDicComponent } from './edit-dic.component';
 import { MaterialModule } from 'src/app/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 @NgModule({
@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    ColorPickerModule,
   ],
   exports: [
     EditDicComponent

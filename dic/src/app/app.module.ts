@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './core';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MaterialModule } from './core';
     AppRoutingModule,
     //BrowserAnimationsModule,
     MaterialModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
