@@ -1,14 +1,25 @@
+<div
+  class="header-box-color"
+  [style.BackgroundColor]="dataRoute.buttonColor"
+></div>
 <div class="header-field">
   <div class="header-title">
-    <div class="header-text">Dicionário {{dataRoute.name}}</div>
+    <div class="header-text" [style.Color]="dataRoute.titleColor">Dicionário {{dataRoute.name}}</div>
   </div>
   <div class="header-options">
     <div class="header-options-button">
-      <button mat-icon-button>
-        <mat-icon>abc</mat-icon>
+      <button
+        mat-icon-button
+        [style.BackgroundColor]="dataRoute.buttonColor"
+      >
+        <mat-icon [style.Color]="dataRoute.fontButtonColor">abc</mat-icon>
       </button>
-      <button class="config-button" mat-icon-button>
-        <mat-icon>settings</mat-icon>
+      <button
+        class="config-button"
+        mat-icon-button
+        [style.BackgroundColor]="dataRoute.buttonColor"
+      >
+        <mat-icon [style.Color]="dataRoute.fontButtonColor">settings</mat-icon>
       </button>
     </div>
   </div>
@@ -25,7 +36,13 @@
     <div class="content-header">
       <div class="content-title">{{word.name}}</div>
       <div class="content-extra">
-        <a *ngIf="word.extra !=''" (click)="openExtra(word)">ver mais</a>
+        <a
+          *ngIf="word.extra !=''"
+          (click)="openExtra(word)"
+          [style.Color]="dataRoute.titleColor"
+        >
+          ver mais
+        </a>
       </div>
     </div>
     <div class="content-definition">
