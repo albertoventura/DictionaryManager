@@ -2,7 +2,7 @@ import { EditWordComponent } from './../edit-word/edit-word.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/core';
+import { routerLabels, StorageService } from 'src/app/core';
 import { FilterWordsComponent } from 'src/app/shared';
 
 @Component({
@@ -11,25 +11,21 @@ import { FilterWordsComponent } from 'src/app/shared';
   styleUrls: ['./list-words.component.scss']
 })
 export class ListWordsComponent implements OnInit {
-  wordList: any[] = [
-    {name: 'Lorem'},
-    {name: 'Ipsum'},
-    {name: 'Dolor'},
-  ];
-  sortArray: any[] = [];
-  hasFilter: boolean = false;
+
   baseArray: any[] = []
   wordArray: any[] = [];
   dataRoute: any;
   @ViewChild('filter') filter!: FilterWordsComponent;
+
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private storage: StorageService,
   ) {
     this.dataRoute = this.router.getCurrentNavigation()?.extras.state;
-    console.log('dataRoute', this.dataRoute);
-    //if(this.dataRoute empty)
+    if(this.dataRoute == undefined){
+      this.router.navigate([routerLabels.listDic]);
+    }
     this.refreshArray();
   }
 
@@ -37,7 +33,6 @@ export class ListWordsComponent implements OnInit {
   }
 
   openEdit(value?: any): void {
-    console.log(value);
     const dialogRef = this.dialog.open(
       EditWordComponent,{
       data: {word: value, idDic: this.dataRoute.id},
@@ -46,7 +41,6 @@ export class ListWordsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined){
-        console.log('volta do dialog', result);
         let word = result;
         this.storage.set(word.id,word);
         this.filter.resetFilter();
@@ -59,22 +53,11 @@ export class ListWordsComponent implements OnInit {
       this.refreshArray();
     }
   }
-  /*
-  refreshArray(){
-    this.wordArray = this.storage.listWords(this.dataRoute.id);
-  }
-  */
+
   refreshArray(fromFilter?: boolean){
-    //console.log('sort',this.sortArray);
     this.baseArray = this.storage.listWords(this.dataRoute.id);
     this.sortAlphabeticaly();
     if(fromFilter){
-      /*
-      if(this.hasFilter){
-        this.filter.filterArray();
-        this.wordArray = this.filter.filteredArray;
-        return;
-      }*/
       this.wordArray = this.filter.filteredArray;
       return;
     }
