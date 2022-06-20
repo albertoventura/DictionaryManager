@@ -4,7 +4,9 @@
       <mat-icon>edit</mat-icon>
     </div>
     <div class="header-text">
-      Dicionário
+      <span *ngIf="!isNewDic">Editar</span>
+      <span *ngIf="isNewDic">Cadastrar</span>
+      <span>Dicionário</span>
     </div>
   </div>
   <div class="header-close">

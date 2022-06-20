@@ -4,8 +4,8 @@
       <mat-icon>edit</mat-icon>
     </div>
     <div class="header-text">
-      <span>Editar</span>
-      <span>Cadastrar</span>
+      <span *ngIf="!isNewWord">Editar</span>
+      <span *ngIf="isNewWord">Cadastrar</span>
       <span>Palavra</span>
     </div>
   </div>
