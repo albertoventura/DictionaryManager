@@ -12,6 +12,7 @@ export class EditWordComponent implements OnInit {
 
   wordData: any;
   isNewWord: boolean = false;
+
   wordForm = new FormGroup({
     id: new FormControl(this.isNewWord ? this.data.id : ''),
     idDic: new FormControl(this.data.idDic ? this.data.idDic : ''),
@@ -19,6 +20,7 @@ export class EditWordComponent implements OnInit {
     definition: new FormControl('', Validators.required),
     extra: new FormControl(''),
   });
+
   get name() {
     return this.wordForm.get('name');
   }
@@ -37,10 +39,6 @@ export class EditWordComponent implements OnInit {
       if(data.word == undefined) {
         this.isNewWord = true;
       }
-      //let wordData = data.word;
-      console.log('isnew', this.isNewWord);
-      console.log('data word', data.word);
-      console.log('data dic', data.idDic);
       if(!this.isNewWord){
         this.wordForm.patchValue({ ...(data.word as Object)});
       }
@@ -52,14 +50,11 @@ export class EditWordComponent implements OnInit {
     this.dialogRef.close();
   }
   submit() {
-    console.log('form', this.wordForm.value);
     if(!this.wordForm.valid){
       return;
     }
     const word = this.dataManager.wordDTO(this.wordForm.value, this.isNewWord)
-    console.log(word);
     this.dialogRef.close(word);
-    //this.dialogRef.close(this.wordForm.value);
   }
 }
 export interface WordData {
