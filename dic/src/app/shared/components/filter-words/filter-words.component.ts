@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FilterService, general } from 'src/app/core';
+import { general } from 'src/app/core';
 
 @Component({
   selector: 'filter-words',
@@ -15,7 +15,6 @@ export class FilterWordsComponent implements OnInit {
   filteredArray: any[] = [];
 
   constructor(
-    private filterService: FilterService,
   ) { }
 
   ngOnInit(): void {
