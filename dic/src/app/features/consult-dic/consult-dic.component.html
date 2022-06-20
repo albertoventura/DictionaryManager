@@ -15,6 +15,7 @@
         matTooltipPosition="above"
         [matTooltipShowDelay]="1"
         [matTooltipHideDelay]="1"
+        (click)="openWords()"
       >
         <mat-icon [style.Color]="dataRoute.fontButtonColor">abc</mat-icon>
       </button>
@@ -26,6 +27,7 @@
         matTooltipPosition="above"
         [matTooltipShowDelay]="1"
         [matTooltipHideDelay]="1"
+        (click)="openEdit()"
       >
         <mat-icon [style.Color]="dataRoute.fontButtonColor">settings</mat-icon>
       </button>

@@ -1,9 +1,9 @@
-import { WordExtraComponent } from './../word-extra/word-extra.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { routerLabels, StorageService } from 'src/app/core';
 import { FilterWordsComponent } from 'src/app/shared';
+import { EditDicComponent, WordExtraComponent } from '..';
 
 @Component({
   selector: 'app-consult-dic',
@@ -43,6 +43,25 @@ export class ConsultDicComponent implements OnInit {
       },
       panelClass: 'dialog-word-extra'
     });
+  }
+  openEdit(): void {
+    const dialogRef = this.dialog.open(
+      EditDicComponent,{
+      data: this.dataRoute,
+      panelClass: 'dialog-edit-dic'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined){
+        let dic = result;
+        this.dataRoute = dic;
+        this.storage.set(dic.id,dic);
+        this.refreshArray();
+      }
+    });
+  }
+  openWords(){
+    this.router.navigate([routerLabels.listWords],{ state: this.dataRoute });
   }
   refreshArray(fromFilter?: boolean){
     this.baseArray = this.storage.listWords(this.dataRoute.id);
