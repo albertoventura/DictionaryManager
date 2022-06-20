@@ -20,6 +20,35 @@ export class StorageService {
        }
   	return array;
   }
+  listWords(dicKey: number) {
+  	const st = this.storage;
+    let array: any[] = [];
+    for (var i = 0; i < st.length; i++) {
+      let key: any = st.key(i);
+      //var value = localStorage.getItem(key);
+      let obj = this.get(key)
+      if(obj.idDic){
+        if(obj.idDic == dicKey){
+          array.push(obj);
+        }
+      }
+    }
+  	return array;
+  }
+  listDic() {
+  	const st = this.storage;
+    let array: any[] = [];
+    for (var i = 0; i < st.length; i++) {
+      let key: any = st.key(i);
+      //var value = localStorage.getItem(key);
+      let obj = this.get(key)
+      if(!obj.idDic){
+        array.push(obj);
+      }
+    }
+  	return array;
+  }
+
   set(key: number, value: any){
     this.storage.setItem(key.toString(), JSON.stringify(value));
   }

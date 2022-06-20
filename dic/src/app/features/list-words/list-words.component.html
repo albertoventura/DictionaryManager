@@ -1,6 +1,6 @@
 <div class="header-field">
   <div class="header-title">
-    <div class="header-text">Dicionário</div>
+    <div class="header-text">Dicionário {{dataRoute.name}}</div>
   </div>
   <div class="header-helper">
     <div class="header-help-button">
@@ -24,7 +24,7 @@
   </div>
   <div
   class="content-line"
-  *ngFor="let word of wordList
+  *ngFor="let word of wordArray
   let evenItem = even;
   let oddItem = odd;"
   [class.even]="evenItem"
@@ -33,12 +33,16 @@
     <div class="content-title">{{word.name}}</div>
     <div class="content-buttons">
       <div class="config-button">
-        <button mat-icon-button>
+        <button mat-icon-button
+          (click)="openEdit(word)"
+        >
           <mat-icon>edit</mat-icon>
         </button>
       </div>
       <div class="delete-button">
-        <button mat-icon-button>
+        <button mat-icon-button
+          (click)="remove(word)"
+        >
           <mat-icon>close</mat-icon>
         </button>
       </div>

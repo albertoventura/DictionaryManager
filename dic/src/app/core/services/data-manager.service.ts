@@ -18,7 +18,10 @@ export class DataManagerService {
     );
     return dic;
   }
-  wordDTO(data: any){
+  wordDTO(data: any, isNew: boolean){
+    if(isNew){
+      data.id = this.generateId()
+    }
     let word: Word = new Word(
       data.id,
       data.idDic,

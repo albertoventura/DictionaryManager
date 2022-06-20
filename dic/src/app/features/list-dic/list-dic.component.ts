@@ -12,20 +12,22 @@ import { DataManagerService } from 'src/app/core/services/data-manager.service';
   styleUrls: ['./list-dic.component.scss']
 })
 export class ListDicComponent implements OnInit {
+  /*
   dicList: any[] = [
     {name: 'Lorem Ipsum Dolor'},
     {name: 'Parangarico tirimico'},
     {name: 'Toma chavinho'},
   ];
+  */
   dicArray: Dictionary[] = []
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private storage: StorageService,
-    private dataManager: DataManagerService,
   ) {
     console.log('list',storage.listAll());
     this.refreshArray();
+    console.log('teste sto', this.storage.get(1655685070681));
   }
 
   ngOnInit(): void {
@@ -60,7 +62,7 @@ export class ListDicComponent implements OnInit {
     }
   }
   refreshArray(){
-    this.dicArray = this.storage.listAll();
+    this.dicArray = this.storage.listDic();
   }
 
 }

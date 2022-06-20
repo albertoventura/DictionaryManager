@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DataManagerService } from 'src/app/core/services/data-manager.service';
 
 @Component({
   selector: 'app-edit-word',
@@ -10,8 +11,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class EditWordComponent implements OnInit {
 
   wordData: any;
-
+  isNewWord: boolean = false;
   wordForm = new FormGroup({
+    id: new FormControl(this.isNewWord ? this.data.id : ''),
+    idDic: new FormControl(this.data.idDic ? this.data.idDic : ''),
     name: new FormControl('', Validators.required),
     definition: new FormControl('', Validators.required),
     extra: new FormControl(''),
@@ -22,14 +25,25 @@ export class EditWordComponent implements OnInit {
   get definition() {
     return this.wordForm.get('definition');
   }
-  get definitionExtra() {
-    return this.wordForm.get('definitionExtra');
+  get extra() {
+    return this.wordForm.get('extra');
   }
-  constructor(public dialogRef: MatDialogRef<EditWordComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: WordData) {
+  constructor(
+    public dialogRef: MatDialogRef<EditWordComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: WordData,
+    private dataManager: DataManagerService,
+  ) {
       this.wordData = data;
-      console.log('data word', data);
-      this.wordForm.patchValue({ ...data});
+      if(data.word == undefined) {
+        this.isNewWord = true;
+      }
+      //let wordData = data.word;
+      console.log('isnew', this.isNewWord);
+      console.log('data word', data.word);
+      console.log('data dic', data.idDic);
+      if(!this.isNewWord){
+        this.wordForm.patchValue({ ...(data.word as Object)});
+      }
   }
 
   ngOnInit(): void {
@@ -42,14 +56,17 @@ export class EditWordComponent implements OnInit {
     if(!this.wordForm.valid){
       return;
     }
-    this.dialogRef.close(this.wordForm.value);
+    const word = this.dataManager.wordDTO(this.wordForm.value, this.isNewWord)
+    console.log(word);
+    this.dialogRef.close(word);
+    //this.dialogRef.close(this.wordForm.value);
   }
 }
 export interface WordData {
-  id: number;
-  dicName: string;
-  buttonColor: string;
-  fontButtonColor: string;
-  titleColor: string;
-  iconColor: string;
+  id: number,
+  idDic: number,
+  name: string,
+  definition: string,
+  extra: string,
+  word: string,
 }
