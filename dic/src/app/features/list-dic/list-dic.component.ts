@@ -13,31 +13,22 @@ import { FilterWordsComponent } from 'src/app/shared';
   styleUrls: ['./list-dic.component.scss']
 })
 export class ListDicComponent implements OnInit {
-  /*
-  dicList: any[] = [
-    {name: 'Lorem Ipsum Dolor'},
-    {name: 'Parangarico tirimico'},
-    {name: 'Toma chavinho'},
-  ];
-  */
 
-  baseArray: Dictionary[] = []
-  dicArray: Dictionary[] = []
+  baseArray: Dictionary[] = [];
+  dicArray: Dictionary[] = [];
+
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private storage: StorageService,
   ) {
-    //console.log('list',storage.listAll());
     this.refreshArray();
-    //console.log('teste sto', this.storage.get(1655685070681));
   }
 
   ngOnInit(): void {
   }
 
   openEdit(value?: any): void {
-    console.log(value);
     const dialogRef = this.dialog.open(
       EditDicComponent,{
       data: value,
@@ -68,16 +59,13 @@ export class ListDicComponent implements OnInit {
     this.baseArray = this.storage.listDic();
     this.sortAlphabeticaly();
     this.dicArray = this.baseArray;
-    console.log('dicArray', this.dicArray);
   }
   sortAlphabeticaly(){
-
     this.baseArray =
     this.baseArray.sort(function(a, b) {
       var textA = a.name.toUpperCase();
       var textB = b.name.toUpperCase();
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
-    console.log('sorted', this.baseArray);
   }
 }
