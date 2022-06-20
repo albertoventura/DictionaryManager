@@ -1,6 +1,6 @@
 <div class="header-field">
   <div class="header-title">
-    <div class="header-text">Nome dic</div>
+    <div class="header-text">Dicionário {{dataRoute.name}}</div>
   </div>
   <div class="header-options">
     <div class="header-options-button">
@@ -16,7 +16,7 @@
 <div class="content-field">
   <div
     class="content-line"
-    *ngFor="let word of wordList
+    *ngFor="let word of wordArray
     let evenItem = even;
     let oddItem = odd;"
     [class.even]="evenItem"
@@ -25,7 +25,7 @@
     <div class="content-header">
       <div class="content-title">{{word.name}}</div>
       <div class="content-extra">
-        <a *ngIf="word.extra !=''" (click)="openExtra()">ver mais</a>
+        <a *ngIf="word.extra !=''" (click)="openExtra(word)">ver mais</a>
       </div>
     </div>
     <div class="content-definition">

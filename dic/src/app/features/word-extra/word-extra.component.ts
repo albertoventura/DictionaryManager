@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-word-extra',
@@ -10,7 +10,10 @@ export class WordExtraComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<WordExtraComponent>,
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: ExtraData,
+  ) {
+    console.log('data', data)
+  }
 
   ngOnInit(): void {
   }
@@ -18,4 +21,12 @@ export class WordExtraComponent implements OnInit {
   close(){
     this.dialogRef.close();
   }
+}
+export interface ExtraData {
+  id: number,
+  idDic: number,
+  name: string,
+  definition: string,
+  extra: string,
+  word: string,
 }

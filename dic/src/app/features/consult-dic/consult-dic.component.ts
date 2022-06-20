@@ -1,6 +1,8 @@
 import { WordExtraComponent } from './../word-extra/word-extra.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { StorageService } from 'src/app/core';
 
 @Component({
   selector: 'app-consult-dic',
@@ -14,9 +16,17 @@ export class ConsultDicComponent implements OnInit {
     {name: 'Cccc', definition: 'Sit amet dolor pog', extra: 'asd' },
   ];
 
+  dataRoute: any;
+  wordArray: any[] = [];
   constructor(
     public dialog: MatDialog,
-  ) { }
+    private router: Router,
+    private storage: StorageService,
+  ) {
+    this.dataRoute = this.router.getCurrentNavigation()?.extras.state;
+    console.log('dataRoute', this.dataRoute);
+    this.refreshArray();
+  }
 
   ngOnInit(): void {
   }
@@ -41,5 +51,7 @@ export class ConsultDicComponent implements OnInit {
       }
     });
   }
-
+  refreshArray(){
+    this.wordArray = this.storage.listWords(this.dataRoute.id);
+  }
 }
