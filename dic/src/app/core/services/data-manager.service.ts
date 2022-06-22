@@ -45,4 +45,11 @@ export class DataManagerService {
   generateId(){
     return new Date().getTime();
   }
+  sortAlphabeticaly(baseArray: any[]){
+    return baseArray.sort(function(a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+  }
 }

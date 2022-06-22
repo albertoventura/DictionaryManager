@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { routerLabels, StorageService } from 'src/app/core';
 import { FilterWordsComponent } from 'src/app/shared';
 import { DeleteComponent } from 'src/app/shared/components/delete';
+import { DataManagerService } from 'src/app/core/services/data-manager.service';
 
 @Component({
   selector: 'app-list-words',
@@ -22,6 +23,7 @@ export class ListWordsComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private storage: StorageService,
+    private dataManager: DataManagerService,
   ) {
     this.dataRoute = this.router.getCurrentNavigation()?.extras.state;
     if(this.dataRoute == undefined){
@@ -76,12 +78,7 @@ export class ListWordsComponent implements OnInit {
   }
 
   sortAlphabeticaly(){
-    this.baseArray =
-    this.baseArray.sort(function(a, b) {
-      var textA = a.name.toUpperCase();
-      var textB = b.name.toUpperCase();
-      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-    });
+    this.baseArray = this.dataManager.sortAlphabeticaly(this.baseArray);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { routerLabels, StorageService } from 'src/app/core';
+import { DataManagerService } from 'src/app/core/services/data-manager.service';
 import { FilterWordsComponent } from 'src/app/shared';
 import { EditDicComponent, WordExtraComponent } from '..';
 
@@ -19,6 +20,7 @@ export class ConsultDicComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private storage: StorageService,
+    private dataManager: DataManagerService,
   ) {
     this.dataRoute = this.router.getCurrentNavigation()?.extras.state;
     if(this.dataRoute == undefined){
@@ -73,11 +75,6 @@ export class ConsultDicComponent implements OnInit {
     this.wordArray = this.baseArray;
   }
   sortAlphabeticaly(){
-    this.baseArray =
-    this.baseArray.sort(function(a, b) {
-      var textA = a.name.toUpperCase();
-      var textB = b.name.toUpperCase();
-      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-    });
+    this.baseArray = this.dataManager.sortAlphabeticaly(this.baseArray);
   }
 }
