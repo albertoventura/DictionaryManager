@@ -2,6 +2,9 @@
   margin: 20px;
 }
 .menu-container{
-  background: url('./../assets/menu-background.png');
+  //background: url('./assets/menu-background.png');
+  img {
+    width: 100%;
+  }
   text-align: center;
 }
